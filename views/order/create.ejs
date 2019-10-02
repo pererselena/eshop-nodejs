@@ -1,0 +1,28 @@
+<%- include("../header", {title: title}); %>
+<main>
+    <h1>Welcome to the CoffeeTea shop</h1>
+
+    <h2>Lägg till en order:</h2>
+
+    <form class="create" method="post">
+        <label>Kund</label>
+        <select class="dropdown" name="kundnummer">
+            <option value="0">Välj i listan</option>
+            <% for (const customer of kund) { %>
+                <option value="<%= customer.kundnummer %>"><%= customer.kundnamn %></option>
+
+                <% } %>
+        </select>
+        <br>
+        <br>
+
+        <input class="buttons_input" type="submit" name="doit" value="Skicka">
+    </form>
+
+    <ul class="buttons">
+        <li><a href="/eshop/order">Tillbaka</a></li>
+    </ul>
+
+</main>
+
+<%- include("../footer"); %>

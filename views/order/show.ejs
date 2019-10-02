@@ -1,0 +1,48 @@
+<%- include("../header", {title: title}); %>
+<main>
+    <p>Kundnummer: <%= order.kundnummer %></p>
+    <p>Kundnamn: <%= order.kundnamn %></p>
+    <p>Ordernummer: <%= order.ordernummer %></p>
+    <p>Status: <%= order.order_status %></p>
+    <p>Kund adress: <%= order.adress %></p>
+    <p>Kund telefon: <%= order.telefon %></p>
+    <ul class="buttons_up">
+        <li><a href="/eshop/order/faktura/<%= order.ordernummer %>">Visa faktura</a></li>
+        <li><a href="/eshop/order/picklist/<%= order.ordernummer %>">Visa plocklista</a></li>
+    </ul>
+    <h4>Orderrader</h4>
+
+    <table class="balance">
+        <thead>
+            <tr>
+                <th>Produktnummer</th>
+                <th>Produktnamn</th>
+                <th>Antal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const row of produktorder) { %>
+                <tr>
+                    <td><%= row.produktkod %></td>
+                    <td><%= row.produktnamn %></td>
+                    <td><form class="" action="/eshop/order/update_row/<%= order.ordernummer %>-<%= row.produktkod %>" method="post">
+                        <input type="number" name="antal" value="<%= row.antal %>">
+                        <button class="fa fa-pencil-square-o" type="submit" name="doit" value="Skicka"></button>
+                    </form></td>
+                    <td><a href="/eshop/order/delete_row/<%= row.produktkod %>-<%= row.ordernummer %>"><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <ul class="buttons">
+        <li><a href="/eshop/order_row/create/<%= order.ordernummer %>">Lägg till produkter</a></li>
+        <% if (typeof produktorder[0] !== 'undefined') { %>
+            <li><a href="/eshop/order/order_ready/<%= order.ordernummer %>">Beställ</a></li>
+        <% } %>
+    </ul>
+</main>
+
+
+
+<%- include("../footer"); %>

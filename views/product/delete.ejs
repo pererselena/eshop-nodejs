@@ -1,0 +1,44 @@
+<%- include("../header", {title: title}); %>
+
+<h1>Welcome to the CoffeeTea shop</h1>
+<main>
+    <h2>Radera produkten:</h2>
+
+    <%= id %>
+
+    <form class="create" method="post">
+        <label>Kod</label>
+        <input type="number" name="produktkod" readonly value="<%= res[0].produktkod %>">
+        <br>
+
+        <label>Namn</label>
+        <input type="text" name="produktnamn" readonly value="<%= res[0].produktnamn %>">
+        <br>
+
+        <label>Beskrivning</label>
+        <input type="text" name="beskrivning" readonly value="<%= res[0].beskrivning %>">
+        <br>
+
+        <label>Kategori</label>
+        <br>
+        <input type="text" name="kategorinamn" readonly value="<%= res[0].kategorinamn %>">>
+        <br>
+
+        <label>Bild</label>
+        <input type="text" name="bildlank" readonly value="<%= res[0].bildlank %>">
+        <br>
+
+        <label>Pris</label>
+        <input type="number" name="pris" readonly value="<%= res[0].pris %>">
+        <br>
+
+        <input class="buttons_input" type="submit" name="doit" value="Skicka">
+    </form>
+
+    <ul class="buttons">
+        <li><a href="/eshop/product">Tillbaka</a></li>
+    </ul>
+
+</main>
+
+<%- include("../footer"); %>

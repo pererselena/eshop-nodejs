@@ -1,0 +1,25 @@
+<%- include("header", {title: title}); %>
+<main>
+    <h1>Welcome to the CoffeeTea shop</h1>
+
+    <h2>Show all Categories:</h2>
+
+    <table class="balance">
+        <thead>
+            <tr>
+                <th>Kategorinamn</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const row of res) { %>
+                <tr>
+                    <td><a href="product/<%= row.kategorinamn %>"><%= row.kategorinamn %></a></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</main>
+
+
+
+<%- include("footer"); %>

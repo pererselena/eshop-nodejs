@@ -1,0 +1,44 @@
+<%- include("../header", {title: title}); %>
+
+<h1>Welcome to the CoffeeTea shop</h1>
+<main>
+    <h2>Lägg till produkt:</h2>
+
+    <form class="create" method="post">
+        <label>Kod</label>
+        <input type="number" name="produktkod">
+        <br>
+
+        <label>Namn</label>
+        <input type="text" name="produktnamn">
+        <br>
+
+        <label>Beskrivning</label>
+        <input type="text" name="beskrivning">
+        <br>
+
+        <label>Kategori</label>
+        <br>
+        <% for (const row of res) { %>
+        <input type="checkbox" name="kategorinamn" value=<%= row.kategorinamn %>><%= row.kategorinamn %>
+        <br>
+        <% } %>
+
+        <label>Bild</label>
+        <input type="text" name="bildlank">
+        <br>
+
+        <label>Pris</label>
+        <input type="number" name="pris">
+        <br>
+
+        <input class="buttons_input" type="submit" name="doit" value="Skicka">
+    </form>
+
+    <ul class="buttons">
+        <li><a href="/eshop/product">Tillbaka</a></li>
+    </ul>
+</main>
+
+
+<%- include("../footer"); %>

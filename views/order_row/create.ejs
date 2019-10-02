@@ -1,0 +1,35 @@
+<%- include("../header", {title: title}); %>
+
+<h1>Welcome to the CoffeeTea shop</h1>
+<main>
+    <h2>Lägg till produkt:</h2>
+
+    <form class="create" method="post" action="/eshop/order_row/add">
+        <label>Produkt</label>
+        <select class="" name="produktkod">
+            <% for (const product of produkt) { %>
+                <option value="<%= product.produktkod %>"><%= product.produktnamn %></option>
+
+                <% } %>
+        </select>
+        <br>
+
+        <label>Antal: </label>
+        <input type="number" name="antal">
+        <br>
+
+        <label>Order</label>
+        <input type="number" name="ordernummer" value="<%= ordernummer %>" readonly>
+        <br>
+
+
+        <input class="buttons_input" type="submit" name="doit" value="Skicka">
+    </form>
+
+    <ul class="buttons">
+        <li><a href="/eshop/product">Tillbaka</a></li>
+    </ul>
+</main>
+
+
+<%- include("../footer"); %>

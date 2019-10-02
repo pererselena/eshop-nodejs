@@ -1,0 +1,41 @@
+<%- include("../header", {title: title}); %>
+<main>
+    <h1>Welcome to the CoffeeTea shop</h1>
+
+    <p>Show picklist:</p>
+
+    <table class="balance">
+        <thead>
+            <tr>
+                <th>Ordernummer</th>
+                <th>Produktkod</th>
+                <th>Antal produkter</th>
+                <th>Hyllnummer</th>
+                <th>Antal i lager</th>
+                <th>Lagerstatus</th>
+                <th>Lagerdiff</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const row of res) { %>
+                <tr>
+                    <td><%= row.ordernummer %></td>
+                    <td><%= row.produktkod %></td>
+                    <td><%= row.antal %></td>
+                    <td><%= row.hylla %></td>
+                    <td><%= row.antal_i_lager %></td>
+                    <td><%= row.lagerstatus %></td>
+                    <td><%= row.lagerdiff %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+
+
+<ul class="buttons">
+    <li><a href="/eshop/order/show/<%= ordernummer %>">Tillbaka</a></li>
+</ul>
+
+</main>
+<%- include("../footer"); %>

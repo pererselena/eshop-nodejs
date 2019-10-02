@@ -1,0 +1,48 @@
+<%- include("../header", {title: title}); %>
+
+<h1>Welcome to the CoffeeTea shop</h1>
+<main>
+    <h2>Ändra produkten:</h2>
+    <form class="create" method="post" action="/eshop/product/update">
+        <label>Kod</label>
+        <input type="number" name="produktkod" readonly value="<%= res[0].produktkod %>">
+        <br>
+
+        <label>Namn</label>
+        <input type="text" name="produktnamn" value="<%= res[0].produktnamn %>">
+        <br>
+
+        <label>Beskrivning</label>
+        <input type="text" name="beskrivning" value="<%= res[0].beskrivning %>">
+        <br>
+
+        <label>Kategori</label>
+        <br>
+        <% for (const row of res.cat) { %>
+        <input type="checkbox" name="kategorinamn" value=<%= row.kategorinamn %>
+        <% if (res.pk.includes(row.kategorinamn)) {
+            %> checked
+        <% } %>><%= row.kategorinamn %>
+        <br>
+        <% } %>
+
+
+
+        <label>Bild</label>
+        <input type="text" name="bildlank" value="<%= res[0].bildlank %>">
+        <br>
+
+        <label>Pris</label>
+        <input type="number" name="pris" value="<%= res[0].pris %>">
+        <br>
+
+        <input class="buttons_input" type="submit" name="doit" value="Skicka">
+    </form>
+
+    <ul class="buttons">
+        <li><a href="/eshop/product">Tillbaka</a></li>
+    </ul>
+</main>
+
+
+<%- include("../footer"); %>

@@ -1,0 +1,44 @@
+<%- include("../header", {title: title}); %>
+<main>
+    <p>Kundnummer: <%= res[0].kundnummer %></p>
+    <p>Kundnamn: <%= res[0].kundnamn %></p>
+    <p>Ordernummer: <%= res[0].ordernummer %></p>
+    <p>Fakturanummer: <%= res[0].fakturanummer %></p>
+    <p>Status: <%= res[0].faktura_status %></p>
+    <p>Kund adress: <%= res[0].adress %></p>
+    <p>Kund telefon: <%= res[0].telefon %></p>
+    <p>Total pris: <%= res[0].total_pris %></p>
+    <p>Faktureringsdatum: <%= res[0].sent %></p>
+    <p>Betalningsdatum: <%= res[0].betald_datum %></p>
+
+    <h4>Fakturarader</h4>
+
+    <table class="balance">
+        <thead>
+            <tr>
+                <th>Produktnummer</th>
+                <th>Produktnamn</th>
+                <th>Antal</th>
+                <th>Pris</th>
+                <th>Radpris</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const row of res) { %>
+                <tr>
+                    <td><%= row.produktkod %></td>
+                    <td><%= row.produktnamn %></td>
+                    <td><%= row.antal %></td>
+                    <td><%= row.pris %></td>
+                    <td><%= row.radpris %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+</main>
+
+
+
+<%- include("../footer"); %>

@@ -1,0 +1,43 @@
+<%- include("../header", {title: title}); %>
+<main>
+    <h1>Welcome to the CoffeeTea shop</h1>
+
+    <p>Show all products in category:</p>
+
+    <table class="balance">
+        <thead>
+            <tr>
+                <th>Kod</th>
+                <th>Namn</th>
+                <th>Beskrivning</th>
+                <th>Bild</th>
+                <th>Pris</th>
+                <th>Antal</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const row of res) { %>
+                <tr>
+                    <td><%= row.produktkod %></td>
+                    <td><%= row.produktnamn %></td>
+                    <td><%= row.beskrivning %></td>
+                    <td><img src="<%= row.bildlank %>" alt="produkt bild" width="100em"></td>
+                    <td><%= row.pris %></td>
+                    <td><%= row.antal %></td>
+                    <td><a href="/eshop/product/update/<%= row.produktkod %>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                    <td><a href="/eshop/product/delete/<%= row.produktkod %>"><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <ul class="buttons">
+        <li><a href="/eshop/product/create">Lägg till produkt</a></li>
+    </ul>
+</main>
+
+
+
+<%- include("../footer"); %>

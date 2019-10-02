@@ -1,0 +1,37 @@
+<%- include("header", {title: title}); %>
+<main>
+    <h1>Welcome to the CoffeeTea shop</h1>
+
+    <p>Show history:</p>
+
+    <form class="create" method="post" action="/eshop/log/search">
+        <label>Search: </label>
+        <input type="text" name="search">
+        <br>
+
+        <input class="buttons_input" type="submit" name="doit" value="Skicka">
+    </form>
+
+    <table class="balance">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tidstämpel</th>
+                <th>Händelse</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const row of res) { %>
+                <tr>
+                    <td><%= row.id %></td>
+                    <td><%= row.tidstampel %></td>
+                    <td><%= row.handelse %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</main>
+
+
+
+<%- include("footer"); %>

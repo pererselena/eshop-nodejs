@@ -1,0 +1,35 @@
+<%- include("../header", {title: title}); %>
+<main>
+    <h1>Welcome to the CoffeeTea shop</h1>
+
+    <p>Show all customers:</p>
+
+    <table class="balance">
+        <thead>
+            <tr>
+                <th>Kundnummer</th>
+                <th>Kund</th>
+                <th>Address</th>
+                <th>Telefonnummer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const row of res) { %>
+                <tr>
+                    <td><%= row.kundnummer %></td>
+                    <td><%= row.kundnamn %></td>
+                    <td><%= row.kundadress %></td>
+                    <td><%= row.telefonnummer %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <ul class="buttons">
+        <li><a href="order/">Order</a></li>
+    </ul>
+</main>
+
+
+
+<%- include("../footer"); %>
